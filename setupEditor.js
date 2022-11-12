@@ -1,8 +1,8 @@
 import Yace from "yace";
 
-const editor = new Yace("[data-json-request-body]", {
+const editor = new Yace("[data-json-response-body]", {
   value: "",
-  lineNumbers: true,
+  lineNumbers: false,
 });
 
 const textarea = document.querySelector("textarea");
@@ -13,9 +13,14 @@ textarea.addEventListener("keydown", (e) => {
   }
 });
 
+// const replacer = (key, value) => {
+//   if (key === "id") return `id-${value}`;
+
+//   return value;
+// };
+
 export function updateResponseEditor(data) {
-  console.log(data);
-  editor.update({ value: JSON.stringify(data, undefined, 2) });
+  editor.update({ value: JSON.stringify(data, null, 2) });
 }
 
 // editor.onUpdate((value) => console.log(`new value: ${value}`));
