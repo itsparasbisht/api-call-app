@@ -2,6 +2,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import prettyBytes from "pretty-bytes";
+import { updateResponseEditor } from "./setupEditor";
 
 const form = document.querySelector("[data-form]");
 const queryParamsContainer = document.querySelector("[data-query-params]");
@@ -60,7 +61,7 @@ form.addEventListener("submit", (e) => {
         .querySelector("[data-response-section]")
         .classList.remove("d-none");
       updateResponseDetails(response);
-      // updateResponseEditor(response.data);
+      updateResponseEditor(response.data);
       updateResponseHeaders(response.headers);
       console.log(response);
     });

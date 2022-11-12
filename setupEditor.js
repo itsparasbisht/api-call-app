@@ -13,7 +13,10 @@ textarea.addEventListener("keydown", (e) => {
   }
 });
 
-// editor.update({ value: data });
+export function updateResponseEditor(data) {
+  console.log(data);
+  editor.update({ value: JSON.stringify(data, undefined, 2) });
+}
 
 // editor.onUpdate((value) => console.log(`new value: ${value}`));
 // editor.destroy();
