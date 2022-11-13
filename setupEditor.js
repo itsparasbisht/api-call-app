@@ -1,4 +1,5 @@
 // request editor ----------------------
+export let requestJSON = "";
 
 let requestEditorElement = document.querySelector("[data-json-request-body]");
 
