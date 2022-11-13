@@ -48,11 +48,11 @@ axios.interceptors.response.use(updateEndTime, (e) => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  let body = "";
+  let data = "";
 
   try {
     if (requestJSON) {
-      body = JSON.parse(requestJSON);
+      data = JSON.parse(requestJSON);
     }
   } catch {
     window.alert("Badly written JSON");
@@ -65,7 +65,7 @@ form.addEventListener("submit", (e) => {
     method: document.querySelector("[data-method]").value,
     params: keyValuePairsToObjects(queryParamsContainer),
     headers: keyValuePairsToObjects(requestHeadersContainer),
-    body: JSON.stringify(body),
+    data,
   })
     .catch((error) => error)
     .then((response) => {
