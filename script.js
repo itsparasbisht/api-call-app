@@ -1,5 +1,4 @@
-import axios from "axios";
-import prettyBytes from "pretty-bytes";
+import prettyBytes from "https://cdn.skypack.dev/pretty-bytes";
 import { updateResponseEditor, requestJSON } from "./setupEditor";
 
 const form = document.querySelector("[data-form]");
