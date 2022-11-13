@@ -58,7 +58,7 @@ form.addEventListener("submit", (e) => {
     window.alert("Badly written JSON");
   }
 
-  console.log(body);
+  console.log(data);
 
   axios({
     url: document.querySelector("[data-url]").value,
