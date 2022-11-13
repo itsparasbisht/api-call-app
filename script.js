@@ -2,7 +2,7 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import prettyBytes from "pretty-bytes";
-import { updateResponseEditor } from "./setupEditor";
+import { updateResponseEditor, requestJSON } from "./setupEditor";
 
 const form = document.querySelector("[data-form]");
 const queryParamsContainer = document.querySelector("[data-query-params]");
@@ -48,12 +48,24 @@ axios.interceptors.response.use(updateEndTime, (e) => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  let body = "";
+
+  try {
+    if (requestJSON) {
+      body = JSON.parse(requestJSON);
+    }
+  } catch {
+    window.alert("Badly written JSON");
+  }
+
+  console.log(body);
 
   axios({
     url: document.querySelector("[data-url]").value,
     method: document.querySelector("[data-method]").value,
     params: keyValuePairsToObjects(queryParamsContainer),
-    // headers: keyValuePairsToObjects(requestHeadersContainer),
+    headers: keyValuePairsToObjects(requestHeadersContainer),
+    body: JSON.stringify(body),
   })
     .catch((error) => error)
     .then((response) => {
